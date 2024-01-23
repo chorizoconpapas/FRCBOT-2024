@@ -6,11 +6,11 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 
 public class ModuleConstants {
-    public static final double kWheelDiameterMeters = Units.inchesToMeters(4);
-    public static final double kDriveMotorRatioGear= 1/5.8462;
-    public static final double kTurningMotorGearRatio= 1/18;
+    public static final double kWheelDiameterMeters = Units.inchesToMeters(3);
+    public static final double kDrivingMotorPinionTeeth = 13;
+    public static final double kDriveMotorRatioGear = (45.0 * 22) / (kDrivingMotorPinionTeeth * 15);
     public static final double kDriveEncoderRot2Meter = kDriveMotorRatioGear * Math.PI *kWheelDiameterMeters;
-    public static final double kTurningEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
+    public static final double kTurningEncoderRot2Rad = 2 * Math.PI;
     public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
     public static final double kTurningEncoderRPM2RadPerSec = kTurningEncoderRot2Rad / 60;
     public static final double kPTurning = 0.5; 
