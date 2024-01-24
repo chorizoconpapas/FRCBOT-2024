@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -14,7 +15,7 @@ import frc.robot.ModuleConstants.OIConstants;
 public class RobotContainer {
   
   private final swerveSubsystemBase swerveSubsytem = new swerveSubsystemBase();
-  private final Joystick driverJoytick = new Joystick(OIConstants.kDriverControllerPort);
+  private final GenericHID driverJoytick = new Joystick(OIConstants.kDriverControllerPort);
 
 
   public RobotContainer() {
@@ -27,7 +28,7 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    new JoystickButton(driverJoytick, 1).whenPresed(()->swerveSubsytem.zeroHeading);
+    new JoystickButton(driverJoytick, 1).onTrue(Commands.runOnce(()-> swerveSubsytem.zeroHeading(), swerveSubsytem));
   }
 
   public Command getAutonomousCommand() {
